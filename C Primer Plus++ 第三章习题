@@ -1,0 +1,37 @@
+1.
+a int
+b short
+c char
+d short
+
+2.
+超出int能表示的最大范围
+
+3.
+int32_t 因为不同的系统整型所占字节不同 int可能是16位也可能是32位
+
+4.
+'\b' char 退格
+int 
+float
+int 16进制 170
+2.0*10^30 指数计数法
+
+5. 
+没有指明main函数的返回类型,参数
+#include<stdio.h>
+多个变量用逗号隔开
+float类型不能同时省略整数和小数部分
+
+6.
+12 int %d
+0X3 int %x|%#x|%d
+'C' char %c|%d
+2.34E07 float %f|%e 
+'\040' char %o|%d
+7.0 float %f
+6L long %ld
+6.0f float %f
+0x5.b6p12 float %a
+012 int %o|%d|%#o
+2.9e05L long double 
