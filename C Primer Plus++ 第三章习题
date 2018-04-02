@@ -1,3 +1,4 @@
+复习题
 1.
 a int
 b short
@@ -33,5 +34,139 @@ float类型不能同时省略整数和小数部分
 6L long %ld
 6.0f float %f
 0x5.b6p12 float %a
+
+7.
 012 int %o|%d|%#o
 2.9e05L long double 
+'s' char %d|%c
+100000 long %ld
+'\n' char %d|%c
+20.0f float %f|%e|%a
+0X44 int %x
+-40 signed int %d
+
+8.
+%d %ld
+%f %c
+
+9.
+// 0000 1010
+char c_ch = '\n';
+char c_ch = 10;
+char c_ch = 012;
+char c_ch = 0X0A;
+
+10. 
+#include<stdio.h>
+int main(void){
+	int cows,legs;
+	printf("How ...\n");
+	scanf("%d", &legs);
+
+	cow = legs / 4;
+	printf("%d", cows);
+
+	return 1;
+}
+
+11. 
+换行
+\
+"
+tab
+
+编程练习
+1.
+#include<stdio.h>
+int main(void) 
+{
+	short a = 65536; // short overflow
+
+	float f_toobig = 3.4E38 * 100.0f; // float overflow
+
+	// 0000 0100 / 2 => 0 0000 010(右移)
+	0.125 => 0.001 => 1.00 * 2^3 => 0 3 1.00 => 0 10000010 000000000000000000000000
+
+	float f_small = 0.1234e-38 / 10;
+}
+
+2
+#include<stdio.h>
+int main(void) {
+	
+	char c_assic;
+	scanf("%c", &c_assic);
+	printf("%c\n", c_assic);
+
+	return 1;
+}
+
+3. 
+#include<stdio.h>
+int main
+{
+	printf("%c\n", '\a');
+	printf("Startled by the sudden sound, Sally shouted,\n\"By the Great Pumpkin, what was that!\"\n");
+	return 1;	
+}
+
+4.
+#include<stido.h>
+int main(void)
+{
+	float f_a;
+	printf("Enter a floating-point value: \n");
+	scanf("%f", &f_a);
+
+	printf("fixed-point nonation: %f\nexponential nonation: %e\np nonation: %a\n", f_a, f_a, f_a);
+	// 0X1.01p+6 = (1*16^0 + 1*16^-2 ) * 2^6
+	return 1;
+}
+
+5.
+#include<stdio.h>
+int main(void) 
+{
+	float l_sec = 3.156e7;
+	char c_old;
+	scanf("%c", &c_old);
+	printf("you have lived about %f seconds\n", c_old * l_sec);
+	return 1;
+}
+
+6.
+#include<stdio.h>
+int main(void) 
+{
+	float amount;
+	float weight = 3.0e-23;
+	scanf("%f", &amount);
+
+	printf("the amount is : %f\n", amount * 950.0 / weight);
+	return 1;
+}
+
+7.
+#include<stdio.h>
+int main(void)
+{
+	float f_in = 2.54;
+	float f_height;
+	scanf("%f", &f_height);
+
+	printf("your height is %f cm", f_in * f_height);
+	return 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
