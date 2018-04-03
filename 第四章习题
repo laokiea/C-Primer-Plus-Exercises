@@ -1,0 +1,48 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5.
+#define BOOK "War and Peace"
+#include<stdio.h>
+int main(void)
+{
+    float cost = 12.99, percent = 80.0;
+
+    printf("This copy of \"War and Peace\" sells for $%.2f.\nThat is %%%.f of list.\n", cost, percent);
+    return 0;
+}
+
+6.
+%d
+%4x
+%10.3f
+%12.2e
+%-20s
+
+7.
+%15lu
+%4#x
+%-12.2e
+%+10.3f
+%8.8s
+
+8.
+%6.4d
+%*o
+%2c
+%+.2f
+%-7.5s
