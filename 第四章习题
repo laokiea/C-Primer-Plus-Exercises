@@ -1,19 +1,32 @@
+1. 
+空格后面的字符不会输入，因为%s遇到空格便停止接受输入
 
+2.
+He sold the painting for $234.50
+H i !
+His ... vulgar. 
+has 41 characters.
+Is 1.20e+03 the same as 1201.00?
 
+3.
+printf("\"His ... vulgar\"");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+4.
+#include<stdio.h>
+#define B "booboo"
+#define X 10
+int main(void)
+{
+	int age, xp;
+	char name[40];
+	printf("please enter your first name.");
+	scanf("%s", name);
+	printf("All right, %s, whats your age\n", name);
+	scanf("%d", &age);
+	xp = age + X;
+	printf("Thats a %s! You must be at least %d.\n", B, xp);
+	return 0;
+}
 
 5.
 #define BOOK "War and Peace"
@@ -97,5 +110,4 @@ scanf("%s %s", fname, lname);
 printf("%s %s", fname, lname);
 printf("%-*d %-*d", strlen(fname), strlen(fname), strlen(lname), strlen(lname));
 
-7.
-
+8.
