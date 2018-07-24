@@ -1,0 +1,188 @@
+1. putchar(getchar()) 输入一个字符，输出一个字符 后者不是一个正确的表达式
+
+3
+#include<stdio.h>
+long count(void);
+
+int main(void)
+{
+	
+	long sum;
+	sum = count();
+	printf("%ld", sum);
+
+	return 0;
+}
+
+long count(void) {
+	long sum = 0;
+	int ch;
+
+	while((ch = getchar()) != EOF) {
+		sum++;
+	}
+
+	return sum;
+}
+count < essay > essayct
+
+4.都不正确
+
+5. EOF是c语言定义的一个宏，数值上表示是-1，表示这文件或者标准输入的结尾。EOF不代表着任何一个具体的值，当程序读取到文件或者输入的结尾时，系统会返回一个信号值，该值代表着EOF
+
+6
+If you qu
+HJacrthjacrt
+
+7. 会统一的当作流来处理
+
+
+8. 数字会被当成一个个字符对待
+
+
+编程练习
+1.
+long count(void) {
+	long sum = 0;
+	int ch;
+
+	while((ch = getchar()) != EOF) {
+		sum++;
+	}
+
+	return sum;
+}
+count < essay
+
+2.
+void exec2(void) {
+	int ch;
+	long count = 0;
+	while((ch = getchar()) != EOF) {
+		count++;
+		if(ch < ' ') {
+			if(ch == '\n') {
+				putchar('\\');
+				putchar('n');
+				putchar('-');
+				printf("%d", ch);
+			} else if(ch == '\t') {
+				putchar('\\');
+				putchar('n');
+				putchar('-');
+				printf("%d", ch);
+			} else {
+				putchar('^');
+				putchar(ch + 64);
+				putchar('-');
+				printf("%d", ch);	
+			}
+		} else {	
+			putchar(ch);
+			// putchar(' ');
+		}
+		if(count % 10 == 0) {
+			putchar('\n');
+		}
+	}
+}
+
+3.
+void exec3(void){
+	int ch;
+	long ucount = 0, lcount = 0;
+	while((ch = getchar()) != EOF) {
+		if(ch >= 'a' && ch <= 'z') {
+			lcount++;
+		} else if(ch >= 'A' && ch <= 'Z') {
+			ucount++;
+		}
+	}
+	printf("lcount: %ld\n", lcount);
+	printf("ucount: %ld", ucount);
+}
+
+4.
+double exec4(void){
+	int ch;
+	long count = 0, sum = 0, charCount = 0;
+	bool charFinish = true;
+	double a;
+
+	while((ch = getchar())) {
+		if(ch != EOF) {
+			if(ch != ' ' && !ispunct(ch) && ch != '\n') {
+				charFinish = false;
+				count++;
+			} else {
+				if(!charFinish) {
+					charFinish = true;
+					charCount++;
+					sum += count;
+					count = 0;
+				}
+			}
+		} else if(!charFinish) {
+			// charFinish = true;
+			charCount++;
+			sum += count;
+			break;
+		}
+	}
+
+	a = (double)sum / (double)charCount;
+
+	return a;
+}
+
+6.
+char exec6(void){
+	char ch;
+	while((ch = getchar())) {
+		if(!isspace(ch)) return ch;
+	}
+}
+
+8.
+float exec8(void){
+	float num1, num2;
+	char op;
+	printf("Enter a opration of your choice\n");
+	printf("%-20s%-20s\n", "a. add", "b. subtract");
+	printf("%-20s%-20s\n", "c. multiply", "d. divice");
+	printf("%-20s\n", "q. quit");
+
+	while((op = getchar())) {
+		if((op < 'a' || op > 'd') && op != 'q') {
+			printf("Enter again\n");
+		} else {
+			break;
+		}
+	}
+
+	while(getchar() != '\n') {
+		continue;
+	}
+
+	if(op != 'q') {
+		printf("Enter two numbers\n");
+		scanf("%f", &num1);
+		scanf("%f", &num2);
+		switch(op) {
+			case 'a':
+			return num1 + num2;
+			break;
+			case 'b':
+			return num1 - num2;
+			break;
+			case 'c':
+			return num1 * num2;
+			break;
+			case 'd':
+			return num1 / num2;
+			break;
+			default:
+			break;
+		}
+	}
+}

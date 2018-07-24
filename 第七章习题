@@ -1,0 +1,83 @@
+复习题
+1 false true false
+
+2
+number >= 90 && number < 100
+ch != 'q' && ch != 'k'
+number >= 1 && number <= 9 && number != 5
+number < 1 && number > 9
+
+3
+
+4
+1
+0
+1
+6
+10
+0
+
+5 *#%*#%$#%*#%*#%$#%*#%*#%$#%*#%*#%
+
+6
+fat hat cat oh no!
+hat cat Oh no!
+cat Oh no!
+
+7
+ch >= 'a' && ch <= 'z'
+!(ch < 'A') && !(ch > 'Z')
+else
+oc++;
+
+8
+第二个if恒为1
+
+9
+Step 1
+Step 2
+Step 1
+Step 3
+Step 1
+Done
+
+10
+#include<stdio.h>
+int main(void) {
+	char ch;
+	while((ch = getchar()) != '#') {
+		if(ch != '\n' && ch != 'c') {
+			if(ch == 'b')
+				break;
+			if(ch == 'h') 
+				printf("step 3\n");
+			printf("step 2\n");
+		}
+	}
+	printf("Done\n");
+	return 0;
+}
+
+
+编程题
+1
+char ch;
+int spaceCount = 0,returnCount = 0,otherCount = 0;
+
+while((ch = getchar()) != '#') {
+	if(ch == '\n') 
+		returnCount++;
+	else if(isspace(ch)) 
+		spaceCount++;
+	else
+		otherCount++;
+}
+printf("space: %d, return %d, other :%d\n", spaceCount, returnCount, otherCount);
+
+2.
+
+
+
+
+
+
