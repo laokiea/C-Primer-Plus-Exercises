@@ -1,0 +1,113 @@
+1. 
+空格后面的字符不会输入，因为%s遇到空格便停止接受输入
+
+2.
+He sold the painting for $234.50
+H i !
+His ... vulgar. 
+has 41 characters.
+Is 1.20e+03 the same as 1201.00?
+
+3.
+printf("\"His ... vulgar\"");
+
+4.
+#include<stdio.h>
+#define B "booboo"
+#define X 10
+int main(void)
+{
+	int age, xp;
+	char name[40];
+	printf("please enter your first name.");
+	scanf("%s", name);
+	printf("All right, %s, whats your age\n", name);
+	scanf("%d", &age);
+	xp = age + X;
+	printf("Thats a %s! You must be at least %d.\n", B, xp);
+	return 0;
+}
+
+5.
+#define BOOK "War and Peace"
+#include<stdio.h>
+int main(void)
+{
+    float cost = 12.99, percent = 80.0;
+
+    printf("This copy of \"War and Peace\" sells for $%.2f.\nThat is %%%.f of list.\n", cost, percent);
+    return 0;
+}
+
+6.
+%d
+%4x
+%10.3f
+%12.2e
+%-20s
+
+7.
+%15lu
+%4#x
+%-12.2e
+%+10.3f
+%8.8s
+
+8.
+%6.4d
+%*o
+%2c
+%+.2f
+%-7.5s
+
+9.
+int i_a;
+scanf("%d", &i_a);
+
+float f_a,f_b;
+scanf("%f %e", &f_a, &f_b);
+
+char name[9];
+scanf("%s", name);
+
+char str[6];
+int i_a;
+scanf("%s %d", str, &i_a);
+
+char str[6];
+int i_a;
+scanf("%*s %d", str, &i_a);
+
+10
+转换说明中的空白意味着再读取输入的时候会忽略输入字符前的任何空白字符，包括没有空白字符
+
+11
+%zd
+
+12
+#define定义的常量命名规则和定义变量一样，不能以特殊字符开头
+
+
+
+编程练习
+1.
+char fname[20],lname[20];
+scanf("%s %s", fname, lname);
+printf("%s,%s", fname, lname);
+
+2.
+#include<string.h>
+
+char fname[20],lname[20];
+scanf("%s %s", fname, lname);
+printf("\"%*s,%s\"", strlen(fname)+3, fname, lname);
+
+6
+#include<string.h>
+
+char fname[20], lname[20];
+scanf("%s %s", fname, lname);
+printf("%s %s", fname, lname);
+printf("%-*d %-*d", strlen(fname), strlen(fname), strlen(lname), strlen(lname));
+
+8.
