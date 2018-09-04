@@ -1,0 +1,185 @@
+1. 实际参数是真正传递给函数的值，而形式参数是函数原型声明里的参数
+
+2.
+void dount(int);
+int gear(int, int);
+int guess(void);
+void stuff_it(double, double *);
+
+3.
+char n_to_char(int);
+int digit(double, int);
+double* which(double *, double *);
+int random(void);
+ 
+4.int add(int a,int b){
+	return a+b;
+}
+
+5.double add(double a,double b){
+	return a + b;
+}
+
+6.void alert(int * x, int * y) {
+	int t;
+	t = *x + *y;
+	*y = *x - *y;
+	*x = t;
+}
+
+7 int num
+
+8
+int max(int x,int y, int z){
+	int max;
+	max = x;
+	if(y > max)
+		max = y;
+	if(z > max)
+		max = z;
+
+	return max;
+}
+
+
+----------------------------------------
+
+1.
+double min(double x, double y) {
+	return x < y ? x : y;
+}
+
+2.
+void chline(char ch, int i, int j) {
+	int a, b;
+	for(a = 0;a < j;a++) {
+		for(b = 0;b < i;b++) {
+			putchar(ch);
+		}
+		putchar('\n');
+	}
+}
+
+3.
+
+
+4.
+double a(double a,double b) {
+	return 1 / ((1 / a) + (1 / b)) / 2;
+}
+
+5.
+void large_of(double *x, double *y) {
+	double m;
+	m = *x > *y ? *x  : *y;
+	*x = m;
+	*y = m;
+}
+
+6
+void three(double *d1, double *d2, double *d3) {
+	int i = 0,j;
+	double tmp;
+	double ds[3] = {*d1, *d2, *d3};
+	for(;i < 3;i++) {
+		for(j = i + 1;j < 3;j++) {
+			if(ds[i] < ds[j]) {
+				tmp = ds[i];
+				ds[i] = ds[j];
+				ds[j] = tmp;
+			}
+		}
+	}
+	*d3 = ds[0];
+	*d2 = ds[1];
+	*d1 = ds[2];
+}
+
+7.
+char _lower(char ch) {
+	if((ch >= 'A' && ch <= 'Z')) {
+		return ch + 32;
+	}
+	return ch;
+}
+
+int get_char_pos(char ch){
+	ch = _lower(ch);
+	if(ch >= 'a' && ch <= 'z') {
+		return ch - 96;
+	}
+	return -1;
+}
+
+void is_letter(){
+	int ch,pos;
+	while((ch = getchar()) != EOF) {
+		pos = get_char_pos(ch);
+		if(pos != -1){
+			printf("%c : %d ", ch,pos);
+		}
+	}
+}
+
+8.
+double power(double a, int b) 
+{
+	int i = 0;
+	int j = b;
+	double r = 1.0;
+
+	if(b == 0) {
+		if(a == 0) {
+			printf("0的0次幂未定义");
+		}
+		return r;
+	} else if(b < 0) {
+		b = -b;
+	}
+
+	for(;i < b;i++) {
+		r *= a;
+	}
+
+	return j < 0 ? (1.0 / r) : r;
+}
+
+9.
+double power_re(double a, int b)
+{
+	int i = 0;
+	int j = b;
+	double r = 1.0;
+
+	if(b == 0) {
+		if(a == 0) {
+			printf("0的0次幂未定义");
+		}
+		return r;
+	}
+
+	return (b < 0 ? 1 / a : a) * power_re(a, b < 0 ? b + 1 : b - 1);
+}
+
+10.
+void to_base_n(unsigned long a, int b) {
+	unsigned long mod;
+	mod = a % b;
+	if(a >= b) {
+		to_base_n(a / b, b);
+	}
+	printf("%lu", mod);
+}
+
+11.
+unsigned long Fibonacci(int n){
+	unsigned long i = 2;
+	unsigned long a = 1, b = 1;
+	unsigned long cursor, t;
+	for(;i < n;i++) {
+		cursor = a + b;
+		a = b;
+		b = cursor;
+	}
+	return cursor;
+}
