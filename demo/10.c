@@ -3,6 +3,9 @@
 #define MONTHS 12
 #define YEARS 5
 
+int sum(int pti[], int n);
+int sum_pti(int * array_first, int * array_end);
+
 int main(void) {
 	
 	// int months[MONTH] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
@@ -45,35 +48,105 @@ int main(void) {
 	// 	printf("Month %d has %d days\n", i, days[i]);
 	// }
 
-	float rain[YEARS][MONTHS] = {
-		{4.3, 4.3, 4.5, 4.3, 5.6, 6.7,4.5, 3.4, 3.5, 3.6, 5.1, 6.3},
-		{4.2, 4.3, 4.5, 4.3, 3.6, 6.7,4.5, 2.4, 3.5, 3.6, 5.1, 6.3},
-		{2.3, 2.3, 4.2, 3.3, 5.61, 3.7,4.6, 3.4, 3.8, 3.6, 5.2, 6.3},
-		{4.3, 4.3, 4.5, 4.3, 5.6, 6.7,4.5, 3.5, 3.5, 3.6, 5.1, 6.4},
-		{2.3, 1.3, 2.5, 1.3, 2.6, 4.7,4.2, 2.4, 3.5, 3.6, 5.1, 3.3}
-	};
+	//const float rain[YEARS][MONTHS] = {
+	// 	{4.3, 4.3, 4.5, 4.3, 5.6, 6.7,4.5, 3.4, 3.5, 3.6, 5.1, 6.3},
+	// 	{4.2, 4.3, 4.5, 4.3, 3.6, 6.7,4.5, 2.4, 3.5, 3.6, 5.1, 6.3},
+	// 	{2.3, 2.3, 4.2, 3.3, 5.61, 3.7,4.6, 3.4, 3.8, 3.6, 5.2, 6.3},
+	// 	{4.3, 4.3, 4.5, 4.3, 5.6, 6.7,4.5, 3.5, 3.5, 3.6, 5.1, 6.4},
+	// 	{2.3, 1.3, 2.5, 1.3, 2.6, 4.7,4.2, 2.4, 3.5, 3.6, 5.1, 3.3}
+	// };
 
-	float m = 0.0,n;
-	int i,j;
-	for(i = 0;i < YEARS;i++) {
-		for(j = 0,n = 0.0;j < MONTHS;j++) {
-			n += rain[i][j];
-		}
-		m += n;
-	}
+	// float m = 0.0,n;
+	// int i,j;
+	// for(i = 0;i < YEARS;i++) {
+	// 	for(j = 0,n = 0.0;j < MONTHS;j++) {
+	// 		n += rain[i][j];
+	// 	}
+	// 	m += n;
+	// }
 
-	printf("thr total rain in 5 years: %.2f\n", m);
-	printf("Jan   Feb   Mar   Apr   May   Jun   Jul   Agu   Sep   Oct   Nov   Dec \n");
+	// printf("thr total rain in 5 years: %.2f\n", m);
+	// printf("Jan   Feb   Mar   Apr   May   Jun   Jul   Agu   Sep   Oct   Nov   Dec \n");
 
-	for(j = 0;j < MONTHS;j++,n = 0.0) {
-		for(i = 0;i < YEARS;i++) {
-			n += rain[i][j];
-		}
-		printf("%.1f  ", n);
-	}
-	printf("\n");
+	// for(j = 0;j < MONTHS;j++,n = 0.0) {
+	// 	for(i = 0;i < YEARS;i++) {
+	// 		n += rain[i][j];
+	// 	}
+	// 	printf("%.1f  ", n);
+	// }
+	// printf("\n");
+
+	// int i,j;
+	// int sqrt[2][3] = {2,3,4,8,99};
+	// for(i = 0;i < 2;i++) {
+	// 	for(j = 0;j < 3;j++) {
+	// 		printf("%d ", sqrt[i][j]);
+	// 	}
+	// 	printf("\n");
+	// }
+	// printf("%p\n", sqrt);
+
+	// printf("%d\n", (sqrt == &sqrt[0][0]));
+
+	// int * pti;
+	// int i = i;
+	// pti = &i;
+	// printf("%p\n", pti);
+	// printf("%p\n", &pti);
+
+	// short dates[SIZE];
+	// short * pts;
+
+	// double bills[SIZE];
+	// double * ptf;
+
+	// ptf = bills;
+	// pts = dates;
+
+	// printf("%23s %15s\n", "short", "double");
+	// for(i = 0;i < SIZE;i++) {
+	// 	printf("pointers + %d: %10p %10p\n", i, pts + i, ptf + i);
+	// }
+
+	// int dates[SIZE] = {1,2,3,4};
+	// int * pti;
+	// pti = dates;
+	// printf("%d %d\n", dates[1], pti[1]);
+
+	int sums[SIZE] = {1, 2,3, 4};
+	// printf("%d\n", sum(sums, SIZE));
+	// int * pti;
+	// pti = sums;
+	// printf("%d %d %d %d\n", pti[2], sums[2], *(sums + 2), *(pti + 2));
+	// printf("%zd %zd %zd\n", sizeof pti, sizeof *pti, sizeof sums);
+	// printf("%d\n", sum_pti(sums, sums+SIZE));
+
+
+	float fa = 123456789.39;
+	printf("%f\n", fa);
 
 	return 0;
+}
+
+int sum(int * pti, int n) {
+	printf("%p\n", pti);
+	int i;
+	int sum = 0;
+	for(i = 0;i< n;i++) {
+		sum += pti[i];
+	}
+
+	return sum;
+}
+
+int sum_pti(int * array_first, int * array_end) {
+	int sum = 0;
+	while(array_first < array_end) {
+		sum += *array_first;
+		array_first++;
+	}
+
+	return sum;
 }
 
 // 数组可以不初始化，但是值会从相同地址上的旧值，或者在不同的存储级别下会设置成0
@@ -82,3 +155,5 @@ int main(void) {
 // 也可以不指定项数初始化，编译器会自动确定大小
 // 可以指定初始化器，int days[10] = {[3] = 20};
 // 数组的方括号只能是整形常量, C99之后允许变长数组，即int days[m]
+
+// yiyuan * de youxianji dayu + -
