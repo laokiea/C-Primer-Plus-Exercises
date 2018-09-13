@@ -1,5 +1,5 @@
 #include<stdio.h>
-#define SIZE 4
+#define SIZE 5
 #define MONTHS 12
 #define YEARS 5
 
@@ -113,7 +113,15 @@ int main(void) {
 	// pti = dates;
 	// printf("%d %d\n", dates[1], pti[1]);
 
-	int sums[SIZE] = {1, 2,3, 4};
+	int sums[SIZE] = {1, 2,4, 8, 16};
+	// int *p, *p_e;
+	// p = sums;
+	// p_e = p + SIZE;
+	// // printf("%p %p %p %p %p\n", sums, sums+1, sums+2, sums+3, sums+4);
+	// while(p < p_e) {
+	// 	printf("%p\n", p++);
+	// }
+
 	// printf("%d\n", sum(sums, SIZE));
 	// int * pti;
 	// pti = sums;
@@ -122,8 +130,19 @@ int main(void) {
 	// printf("%d\n", sum_pti(sums, sums+SIZE));
 
 
-	float fa = 123456789.39;
-	printf("%f\n", fa);
+	// float fa = 1234567899.67;
+	// printf("%.2f\n", fa);
+
+	int * pt1, * pt2, * pt3;
+
+	pt1 = sums;
+	pt2 = &sums[2];
+
+	printf("pt1 = %p, *pt1 = %d, &pt1 = %p\n", pt1, *pt1, &pt1);
+
+	// pointer add
+	pt3 = pt1 + 4;
+	printf("pt1 + 4 = %p, *(pt1 + 4) = %d\n", pt3, *pt3);
 
 	return 0;
 }
