@@ -136,13 +136,34 @@ int main(void) {
 	int * pt1, * pt2, * pt3;
 
 	pt1 = sums;
-	pt2 = &sums[2];
+	pt2 = &sums[1];
 
-	printf("pt1 = %p, *pt1 = %d, &pt1 = %p\n", pt1, *pt1, &pt1);
+	printf("\npt1 = %p, *pt1 = %d, &pt1 = %p\n", pt1, *pt1, &pt1);
 
 	// pointer add
 	pt3 = pt1 + 4;
-	printf("pt1 + 4 = %p, *(pt1 + 4) = %d\n", pt3, *pt3);
+	printf("\npt1 + 4 = %p, *(pt1 + 4) = %d\n", pt3, *pt3);
+
+	// dizeng zhizhen 
+	pt1++;
+	printf("\nvalues after pt1++:\n");
+	printf("pt1 = %p, *pt1 = %d, &pt1 = %p\n", pt1, *pt1, &pt1);
+
+	// dijian zhizhen
+	pt2--;
+	printf("\nvalues after pt1--:\n");
+	printf("pt2 = %p, *pt2 = %d, &pt1 = %p\n", pt2, *pt2, &pt2);
+
+	--pt1;
+	++pt2;
+	printf("\n%p %p %p %p\n", pt1, pt2, sums, sums+2);
+
+	// one pointer sub another pti
+	printf("\nsubtracting one pointer from another\n");
+	printf("pt1 = %p pt2 = %p pt2 - pt1 = %d\n", pt1, pt2, pt2 - pt1);
+
+	//one pti sub a int
+	// printf("\npt1 = %p pt1 -- = %p\n", pt1, pt1--);
 
 	return 0;
 }
