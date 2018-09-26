@@ -5,6 +5,7 @@
 
 int sum(int pti[], int n);
 int sum_pti(int * array_first, int * array_end);
+void add_to(double * ar, int n, double v);
 
 int main(void) {
 	
@@ -133,37 +134,80 @@ int main(void) {
 	// float fa = 1234567899.67;
 	// printf("%.2f\n", fa);
 
-	int * pt1, * pt2, * pt3;
+	// int * pt1, * pt2, * pt3;
 
-	pt1 = sums;
-	pt2 = &sums[1];
+	// pt1 = sums;
+	// pt2 = &sums[1];
 
-	printf("\npt1 = %p, *pt1 = %d, &pt1 = %p\n", pt1, *pt1, &pt1);
+	// printf("\npt1 = %p, *pt1 = %d, &pt1 = %p\n", pt1, *pt1, &pt1);
 
-	// pointer add
-	pt3 = pt1 + 4;
-	printf("\npt1 + 4 = %p, *(pt1 + 4) = %d\n", pt3, *pt3);
+	// // pointer add
+	// pt3 = pt1 + 4;
+	// printf("\npt1 + 4 = %p, *(pt1 + 4) = %d\n", pt3, *pt3);
 
-	// dizeng zhizhen 
-	pt1++;
-	printf("\nvalues after pt1++:\n");
-	printf("pt1 = %p, *pt1 = %d, &pt1 = %p\n", pt1, *pt1, &pt1);
+	// // dizeng zhizhen 
+	// pt1++;
+	// printf("\nvalues after pt1++:\n");
+	// printf("pt1 = %p, *pt1 = %d, &pt1 = %p\n", pt1, *pt1, &pt1);
 
-	// dijian zhizhen
-	pt2--;
-	printf("\nvalues after pt1--:\n");
-	printf("pt2 = %p, *pt2 = %d, &pt1 = %p\n", pt2, *pt2, &pt2);
+	// // dijian zhizhen
+	// pt2--;
+	// printf("\nvalues after pt1--:\n");
+	// printf("pt2 = %p, *pt2 = %d, &pt1 = %p\n", pt2, *pt2, &pt2);
 
-	--pt1;
-	++pt2;
-	printf("\n%p %p %p %p\n", pt1, pt2, sums, sums+2);
+	// --pt1;
+	// ++pt2;
+	// printf("\n%p %p %p %p\n", pt1, pt2, sums, sums+2);
 
-	// one pointer sub another pti
-	printf("\nsubtracting one pointer from another\n");
-	printf("pt1 = %p pt2 = %p pt2 - pt1 = %d\n", pt1, pt2, pt2 - pt1);
+	// // one pointer sub another pti
+	// printf("\nsubtracting one pointer from another\n");
+	// printf("pt1 = %p pt2 = %p pt2 - pt1 = %d\n", pt1, pt2, pt2 - pt1);
 
 	//one pti sub a int
 	// printf("\npt1 = %p pt1 -- = %p\n", pt1, pt1--);
+
+	// int i = 10;
+	// int * pt = &i;
+
+	// printf("%p\n", pt);
+	// pt++;
+	// printf("%d %p\n", *pt, pt);
+
+	// char T[2] = {'a', 'b'};
+	// printf("%p %p\n", T, &T[1]);
+
+	// int * pt1;
+	// int * pt2;
+	// int one[2] = {100, 200};
+	// int two[2] = {300, 400};
+	// pt1 = one;
+	// pt2 = two;
+	// printf("pt1 : %p, pt2 : %p, %d\n", pt1, pt2, pt1 > pt2);
+
+	// char a = 'a';
+ // 	char * cpt1;
+ // 	cpt1 = &a;
+ // 	*cpt1 = 'b';
+ // 	printf("%c\n", a);
+
+	// int urn[3];
+	// int * pt1, * pt2;
+	// pt2 = urn + 2;
+	// printf("%p %p\n", urn, pt2);
+
+	// double add[2] = {1.2, 4.6};
+	// const double * dpt;
+	// dpt = add;
+	// dpt[1] = 4.7;
+	// printf("%f %f %f %f", add[0], dpt[0], *(add + 1), *(dpt+1));
+	// add_to(add, 2, 1);
+	// printf("%f %f\n", add[0], add[1]);
+
+	// int a[2] = {1 ,2 };
+	// int * p1, * p2;
+	// p1 = &a[1];
+	// p2 = a+1;
+	// printf("%p %p\n", p1, p2);
 
 	return 0;
 }
@@ -189,6 +233,14 @@ int sum_pti(int * array_first, int * array_end) {
 	return sum;
 }
 
+void add_to(double ar[], int n, double v)
+{
+	int i = 0;
+	for(;i < n;i++) {
+		ar[i] += v;
+	}
+}
+
 // 数组可以不初始化，但是值会从相同地址上的旧值，或者在不同的存储级别下会设置成0
 // 数组元素可以比项数少，其余的会被初始化为0
 // 但是不可以比项数多，报错
@@ -197,3 +249,6 @@ int sum_pti(int * array_first, int * array_end) {
 // 数组的方括号只能是整形常量, C99之后允许变长数组，即int days[m]
 
 // yiyuan * de youxianji dayu + -
+
+// 如果在函数中不想改变数组的值 声明和原型使用const
+// 如果指针声明为const，那么不能改变指针所指向的值，但是可以让指针指向别的地址，比如pt++; pt = &i;
