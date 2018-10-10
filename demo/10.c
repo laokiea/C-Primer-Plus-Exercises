@@ -6,6 +6,8 @@
 int sum(int pti[], int n);
 int sum_pti(int * array_first, int * array_end);
 void add_to(double * ar, int n, double v);
+void show_array(const int * array);
+void show_array_1(int array[]);
 
 int main(void) {
 	
@@ -114,7 +116,7 @@ int main(void) {
 	// pti = dates;
 	// printf("%d %d\n", dates[1], pti[1]);
 
-	int sums[SIZE] = {1, 2,4, 8, 16};
+	// int sums[SIZE] = {1, 2,4, 8, 16};
 	// int *p, *p_e;
 	// p = sums;
 	// p_e = p + SIZE;
@@ -209,6 +211,17 @@ int main(void) {
 	// p2 = a+1;
 	// printf("%p %p\n", p1, p2);
 
+	int sums[2] = {1, 2};
+	const int c_sums[2] = {3, 5};
+	// const int * p1;
+	// p1 = sums; // ok
+	// p1 = c_sums; //ok
+	// p1 = &sums[1]; // ok
+
+	// show_array(sums);
+	// show_array(c_sums);
+
+	show_array_1(c_sums);
 	return 0;
 }
 
@@ -241,14 +254,53 @@ void add_to(double ar[], int n, double v)
 	}
 }
 
+void show_array(const int * array) {
+
+}
+
+void show_array_1(int array[]){
+
+}
+
 // 数组可以不初始化，但是值会从相同地址上的旧值，或者在不同的存储级别下会设置成0
+
 // 数组元素可以比项数少，其余的会被初始化为0
+
 // 但是不可以比项数多，报错
+
 // 也可以不指定项数初始化，编译器会自动确定大小
+
 // 可以指定初始化器，int days[10] = {[3] = 20};
+
 // 数组的方括号只能是整形常量, C99之后允许变长数组，即int days[m]
 
 // yiyuan * de youxianji dayu + -
 
 // 如果在函数中不想改变数组的值 声明和原型使用const
+
 // 如果指针声明为const，那么不能改变指针所指向的值，但是可以让指针指向别的地址，比如pt++; pt = &i;
+
+/*
+	与其他变量不同，const限定一个指针变量，因为指针的值是地址，这个地址是可以变的，但是对应地址的值不可变
+*/
+
+/*
+	一个普通指针的地址只能初始化成非const数据的地址，例如
+	int sums[2] = {1, 2};
+	const int c_sums[2] = {3, 5};
+	int * p1;
+	p1 = sums; // ok
+	p1 = c_sums; // 报错
+	因为如果普通指针可以初始化成const数据的地址，那么就可以更改const数据的值
+*/
+
+/*
+	而一个const限定的指针可以指向const或者非const数据的地址，例如：
+	int sums[2] = {1, 2};
+	const int c_sums[2] = {3, 5};
+	const int * p1;
+	p1 = sums; // ok
+	p1 = c_sums; //ok
+	p1 = &sums[1]; // ok
+*/
+
