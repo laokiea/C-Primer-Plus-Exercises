@@ -211,17 +211,32 @@ int main(void) {
 	// p2 = a+1;
 	// printf("%p %p\n", p1, p2);
 
-	int sums[2] = {1, 2};
-	const int c_sums[2] = {3, 5};
+	// const int c_sums[2] = {3, 5};
 	// const int * p1;
 	// p1 = sums; // ok
 	// p1 = c_sums; //ok
 	// p1 = &sums[1]; // ok
 
+	// const int * const pc = sums;
+	// *pc = 10;
+	// printf("%d\n", sums[0]);
+	// int const * const pi = c_sums;
+	// pi = sums;
+
+	// int zippo[4][2] = {{1,2},{3,4},{5,6},{7,8}};
+	// printf("%p\n", &zippo[0][0]);
+	// printf("%p\n", zippo[0]);
+
+	// printf("%p\n", &zippo[0]);
+
+	// zippo[0] = &zippo[0][0] = 0xa1;
+	// &zippo[0] = 0xb1;
+	// zippo = &zippo[0]	 = 0xb1;
+
 	// show_array(sums);
 	// show_array(c_sums);
 
-	show_array_1(c_sums);
+	// show_array_1(c_sums);
 	return 0;
 }
 
@@ -281,7 +296,9 @@ void show_array_1(int array[]){
 // 如果指针声明为const，那么不能改变指针所指向的值，但是可以让指针指向别的地址，比如pt++; pt = &i;
 
 /*
-	与其他变量不同，const限定一个指针变量，因为指针的值是地址，这个地址是可以变的，但是对应地址的值不可变
+	与其他变量不同，const限定一个指针变量(double const * pd)，因为指针的值是地址，这个地址是可以变的，但是对应地址的值不可变
+	但是如果写法改成，double * const pd，那么可以更改指针保存地址指向的值，但是不能更改指针的地址
+	另外还可以const限定两次，这样指针指向地址的值和指针指向地址都不可以改变，如const int * const pd
 */
 
 /*
@@ -302,5 +319,11 @@ void show_array_1(int array[]){
 	p1 = sums; // ok
 	p1 = c_sums; //ok
 	p1 = &sums[1]; // ok
+*/
+
+/*
+	对于一个数组,数组的地址和数组首元素的地址相同
+	int sums[2] = {1,2};
+	&sums == &sums[0];
 */
 
