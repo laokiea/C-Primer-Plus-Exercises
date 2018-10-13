@@ -223,7 +223,7 @@ int main(void) {
 	// int const * const pi = c_sums;
 	// pi = sums;
 
-	// int zippo[4][2] = {{1,2},{3,4},{5,6},{7,8}};
+	int zippo[4][2] = {{1,2},{3,4},{5,6},{7,8}};
 	// printf("%p\n", &zippo[0][0]);
 	// printf("%p\n", zippo[0]);
 
@@ -237,6 +237,91 @@ int main(void) {
 	// show_array(c_sums);
 
 	// show_array_1(c_sums);
+
+	// zippo = &zippo[0];
+	// &zippo[0] = &zippo[0][0];
+	// zippo + 1 = &zippo[1] = &zippo[1][0];
+	// printf("zippo = %p, zippo + 1 = %p, &zippo[0][1] = %p\n\n", zippo, zippo + 1, &zippo[1][0]); 
+
+	// zippo[0] = &zippo[0][0] 
+	// zippo[0] + 1  = &zippo[0][1] 
+	// printf("zippo[0] = %p, zippo[0] + 1 = %p , &zippo[0][1] = %p\n\n", zippo[0], zippo[0] + 1, &zippo[0][1]);
+
+	// *zippo = zippo[0] = &zippo[0][0]
+	// printf("*zippo = %p, &zippo[0][0] = %p, *zippo + 1 = %p, &zippo[0][1] = %p\n\n", *zippo, &zippo[0][0], *zippo + 1, &zippo[0][1]);
+
+	// 1
+	// printf("zippo[0][0] = %d\n\n", zippo[0][0]);
+
+	// 1
+	// printf("*zippo[0] = %d\n\n", *zippo[0]);
+
+	// 1
+	// printf("**zippo = %d\n\n", **zippo);
+
+	// 6
+	// printf("zippo[2][1] = %d\n\n", zippo[2][1]);
+
+	// zippo =  &zippo[0]
+	// zippo + 2 = &zippo[2]; // its value is a address
+	// *(zippo + 2) = zippo[2]
+	// zippo[2] = &zippo[2][0]
+	// zippo[2] + 1 = &zippo[2][0] + 1 = &zippo[2][1]
+	// 6
+	// printf("*(*(zippo + 2) + 1) = %d\n\n", *(*(zippo + 2) + 1));
+	//
+	// printf("**(zippo + 2) = %d, *(zippo+2)[0] = %d\n\n", **(zippo + 2), *(zippo + 2)[0]);
+
+	// int sums[4]  = {1,2,3,4};
+	// int * pi = sums;
+	// printf("%d\n", pi[1]);
+
+	// int (* pz)[2] = zippo;
+	
+	//pz = &zippo[0][0]
+	// pz = &zippo[0] = &zippo[0][0]
+	// printf("pz = %p, &pz[0][0] = %p, pz + 1 = %p, &pz[1][0] = %p\n\n", pz , &pz[0][0], pz + 1, &pz[1][0]);
+
+	// pz[0] = &pz[0][0]
+	// pz[0] + 1 = &pz[0][1]
+	// printf("pz[0] = %p, pz[0][0] = %p, pz[0] + 1 = %p, &pz[0][1] = %p\n\n", pz[0], &pz[0][0], pz[0] + 1, &pz[0][1]);
+
+	// int sums [4] = {1,2,3,4};
+	// int * pi = sums;
+	// printf("sums = %p, &sums = %p, &sums[0] = %p, pi = %p, &pi = %p\n\n", sums, &sums, &sums[0], pi, &pi);
+
+	// *pz = pz[0]  = zippo[0] = &zippo[0][0]
+	// *pz + 1 = &zippo[0][1]
+	// printf("*pz = %p, &pz[0][0] = %p, *pz + 1 = %p, &pz[0][0] = %p\n\n", *pz, &pz[0][0], *pz + 1, &pz[0][1]);
+
+	// * zippo[0] = * &zippo[0][0] = 1
+	// printf("*pz[0] = %d\n\n", *pz[0]);
+
+	// **pz = * *pz = * pz[0] = * &pz[0][0] = pz[0][0]
+	// printf("**pz = %d\n\n", **pz);
+
+	// pz + 2 = &pz [2] 
+	// * (pz + 2) = pz[2] = &pz[2][0]
+	// * (pz + 2) + 1 = &pz[2][1]
+	// *(*(pz + 2) + 1) = pz[2][1]
+	// printf("*(*(pz + 2) + 1) = %d\n\n", *(*(pz + 2) + 1));
+
+	// printf("pz[2][1] = %d, *(*(pz + 2) + 1) = %d\n\n", pz[2][1], *(*(pz + 2) + 1));
+	
+	// int i = 5;
+	// double x;
+	// int * pi = &i;
+	// double * pd = &x;
+	// printf("%p\n", pd);
+	// x = i;
+	// pd = pi;
+
+	// int p = 1;
+	// int * pi = &p;
+	// int * *pii = &pi;
+	// printf("%d\n", *pi);
+	// *pii = 0x7fffe3cc77d0;
+	// printf("%d\n", *pi);
 	return 0;
 }
 
@@ -324,6 +409,14 @@ void show_array_1(int array[]){
 /*
 	对于一个数组,数组的地址和数组首元素的地址相同
 	int sums[2] = {1,2};
-	&sums == &sums[0];
+	&sums == &sums[0] = sums;
+*/
+
+/*
+定义一个指向多维数组的指针:
+int a[m][n] = {};
+int (* pi)[n] = a;
+n代表了指针递增或递减一次地址跨度为n个类型大小
+pi[m][n] = *(*(pi + m) + n);
 */
 
