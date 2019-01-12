@@ -9,6 +9,14 @@ void add_to(double * ar, int n, double v);
 void show_array(const int * array);
 void show_array_1(int array[]);
 
+#define COLS 4
+#define ROWS 3
+// int sum2d(int (* pt)[COLS]);
+// int sum2d(int pt[][COLS]);
+// int sum2d(int rows, int cols, int ar[rows][cols]);
+int sum2d(int, int, int ar[*][*]);
+void toset(int, int, int ar[*][*]);
+
 int main(void) {
 	
 	// int months[MONTH] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
@@ -322,7 +330,104 @@ int main(void) {
 	// printf("%d\n", *pi);
 	// *pii = 0x7fffe3cc77d0;
 	// printf("%d\n", *pi);
+
+	// int i = 9;
+	// int *pi;
+	// int **pii;
+	// pi = &i;
+	// pii = &pi;
+
+	// printf("pi = %p, pii = %p\n", pi, pii);
+
+	int * p;
+	int * * pp;
+	int (*p3)[3];
+	int ar1[2][3] = {{1,2,3}, {6,4,5}};
+	int ar2[3][2]; // ar2 = &ar2[0]; ar2 + 1 = &ar2[1];
+
+	// 指针的兼容性
+	// p = &ar1[0][0]; // ok
+	// p = ar1[0]; //ok -> &ar1[0][0]
+	// pp = &p; //ok 
+	// *pp = &ar1[0]; // wrong -> ar1 = &ar1[0] 3 int bytes
+	// *pp = ar2[0];
+	// p3 = &ar2[1]; //wrong -> 2 int bytes
+	// p3 = ar2[1]; // wrong -> &ar2[1][0]
+	// p = ar2[1]; //ok
+	// p3 = ar1 + 1; // &ar1[1] = &ar[1][0]
+	// printf("%d\n", **p3); 
+	// printf("ar1 + 1 = %p, &ar1[1][0] = %p\n", ar1 + 1, &ar1[1][0]);
+
+	// int x = 10;
+	// const int y = 20;
+	// int * px = &x;
+	// const int * py = &y;
+	
+	// px = py;
+	// *px = 15;
+	// printf("%d\n", *py);
+	// py = px;
+	// *py = 15;
+
+	// int x = 10;
+	// const int **pp2;
+	// int *p1 = &x;
+	// pp2 = &p1; // pp2 指向一个int指针的地址，*pp2是该int指针的值，也是该指针指向整形变量的地址
+
+	// int x = 10;
+	// int * px = &x;
+	// int **p2 = &px;
+
+	// printf("&px = %p,*p2 = %p, &x = %p\n", &px, *p2, &x);
+
+	int junks[ROWS][COLS] = {
+		{1,2,3,4},
+		{5,6,7,8},
+		{9,10,11,12}
+	};
+	int t_junks[4] = {1,2,4,5};
+	int sums = 0;
+	sums = sum2d(ROWS, COLS, junks);
+	// printf("%d\n", sums);
+
+	toset(ROWS, COLS,junks);
+	// printf("%d\n", junks[0][0]);
+
+	int *pt = (int []){1,2,4}; //ok
+	int (* pt2)[4] = (int [][4]){{1,2,3,4},{5,6,7,8},{9,10,11,12}}; // ok
+	// int (* pt2)[4] = (int [][]){blabla}; // wrong
+
+	// int *pt1 = {1,2,4};// wrong not a compound literal
+
 	return 0;
+}
+
+void toset(int rows, int cols, int ar[rows][cols]) {
+	ar[0][0] = 10;
+}
+
+// int sum2d(int pt[][COLS]) 
+// {
+// 	int sums = 0,i,j;
+// 	for(i = 0;i < ROWS;i++) {
+// 		for(j = 0;j < COLS;j++) {
+// 			sums += pt[i][j];
+// 		}
+// 	}
+// 	return sums;
+// }
+
+int sum2d(int rows, int cols, int ar[rows][cols]) {
+	int i,j,sums;
+	sums = 0;
+
+	for(i = 0;i < rows;i++) {
+		for(j = 0;j < cols;j++) {
+			sums += ar[i][j];
+		}
+	}
+
+	return sums;
 }
 
 int sum(int * pti, int n) {
@@ -420,3 +525,7 @@ n代表了指针递增或递减一次地址跨度为n个类型大小
 pi[m][n] = *(*(pi + m) + n);
 */
 
+/*
+定义一个变长数组函数声明
+void a(int r, int c, int a[r][c]);
+*/
