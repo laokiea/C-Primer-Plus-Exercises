@@ -1,4 +1,4 @@
-#include<stdio.h>
+#include <stdio.h>
 
 // 自定义函数代替fgets
 // 获取整行输入，如果输入里有换行替换成\0,如果有空字符串\0，就抛弃缓冲区内的后续输入
@@ -19,4 +19,24 @@ char * s_gets(char * st, int len) {
     }
 
     return st;
+}
+
+void string_sort(char * strings[], int num) {
+    for(int i = 0;i < num - 1;i++) {
+        for(int j = i + 1;j < num;j++) {
+            if(strcmp(strings[i], strings[j]) > 0) {
+                char * temp;
+                temp = strings[i];
+                strings[i] = strings[j];
+                strings[j] = temp;
+            }
+        }
+    }
+}
+
+void toUpper(char * string) {
+    while(*string) {
+        *string = toupper(*string);
+        string++;
+    }
 }
