@@ -1,0 +1,120 @@
+1. 
+标准方式初始化字符串不能省略最后的空字符'\0'
+
+2. 
+"See you at the snack bar."
+"ee you at the snack bar."
+"See you"
+"e you"
+
+3.
+"y"
+"my"
+"mmy"
+"ummy"
+"Yummy"
+
+4.
+"I read part of it all the way through."
+
+5.
+'H' 'o' 'H' 'o' 'H' 'o' '!' '!' 'o' 'H' 'o' 'H' 'o' 'H'
+字符指针
+字符串首字符的地址
+指针先自减后解引用，后者先解引用，后对解引用的值做减1
+死循环
+测试指针的加减法运算
+死循环
+定义一个字符串传入函数中
+
+6.
+1 字符常量通常存储为int类型-4 2
+
+7.
+"How are ya, sweetie? "
+"How are ya, sweetie? "
+"Beat the clock."
+"eat the clock."
+"Beat the clock. Win a toy."
+"Beat"
+"chat"
+"hat"
+"at"
+"t"
+"at"
+"hat"
+"How are ya, sweetie? "
+
+8.
+'f'
+'a' 'a'
+'v'
+'r'
+'h'
+'e' 'e'
+
+*le*on*sm
+
+9.
+
+char * s_gets(char * string, int num) {
+    if(!fgets(string, num, stdin)) {
+        return NULL;
+    }
+
+    while(*string++) {
+        if(*string == '\n') {
+            *string = '\0';
+            break;
+        }
+    }
+
+    while(getchar() != '\n') ;
+}
+
+10. 
+unsigned int s_strlen(char * string) {
+    unsigned int count = 0;
+    while(*string++) {
+        count++:
+    }
+
+    return count;
+}
+
+11.
+char * s_gets(char * string, int num) {
+    if(!fgets(string, num, stdin)){
+        return NULL;
+    }
+
+    char * temp;
+    if( (temp = strchr(string, '\n')) != NULL) {
+        *temp = '\0';
+    }
+
+    while(getchar() != '\n') ;
+}
+
+12.
+char * strfind(char * string) {
+    while(*string++) {
+        if(*string == ' ') {
+            return string;
+        }
+    }
+
+    return NULL;
+}
+
+char * strfind(const char * string) {
+    while(*string++) {
+        if(*string == ' ') {
+            return (char *)string;
+        }
+    }
+
+    return NULL;
+}
+
+13

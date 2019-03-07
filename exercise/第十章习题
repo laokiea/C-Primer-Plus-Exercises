@@ -1,0 +1,41 @@
+1. 8 8 4 4 0 0 2 2
+2. 4个元素
+3. ref的地址即数组首元素的地址，ref+1及数组第二个元素地址，++ref 无效表达式
+4. 12 16|12 0
+5. 12 16|12 14
+6. printf("%d\n", *((*(ref+22))+56) );  
+7. int digits[10] = {};
+   float rates[6] = {};
+   int mat[3][5] = {{}...};
+   int * psa[20] = {};
+   char *pstr = (char[20]){...};
+
+8.int a[6] = {1,2,4,8,16,32};
+  a[2];
+  int b[100] = {[99] = 1};
+  int c[100] = {[5] = 101,[10] = 101, 101, 101, 101}
+
+9.
+0 - 9
+
+10.
+rootbeer[2] = value; //有效正常赋值
+scanf("%f", &rootbeer); //写法错误
+rootbeer = value; //无效，rootbeer不是一个正常的左值
+printf("%f", rootbeer); // 无效，使用%p
+things[4][4] = rootbeer[3]; // 有效
+things[5] = rootbeer; //无效，不能使用数组赋值
+pf = value; //无效，类型不一致
+pf = rootbeer; //有效
+
+11.
+int a[800][600];
+
+12.
+void a(double ar[]); void a(double *ar);void a(double ar[n], int n);
+void a(short ar[][30]); void a(short (*pt)[30]);void a(int n, int m, ar[m][n]);
+void a(long ar[][10][15]); void a(long (*pt)[10][15]);void a(int m,int n, int k, long ar[m][n][k]);
+
+13.
+show((int [4]){8, 3, 9, 2}, 4);
+show_2((double[][3]){{8,3,9},{5,4,1}}, 2);
