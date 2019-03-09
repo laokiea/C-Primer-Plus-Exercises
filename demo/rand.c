@@ -1,5 +1,6 @@
 #include <time.h>
 
+int _test = 115;
 unsigned long int seed = 1;
 
 void _srand(unsigned long int u_seed);
