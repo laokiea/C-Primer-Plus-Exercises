@@ -1,0 +1,88 @@
+1.
+#include <stdio.h>
+FILE关键字指定文件指针
+fputs第二个参数为文件指针
+fopen需要指定打开模式
+fclose参数为文件指针
+
+2.
+输出文件中的数字字符
+
+3.
+ch = getc(fp1);
+fprintf(fp2, "%c\n", ch);
+putc(ch, fp2);
+fclose(fp1);
+
+4.
+void __test_e4__(int argc, char ** argv) 
+{
+    FILE * fp;
+    double num = 0.0;
+    double sum = 0.0;
+    int count  = 0;
+
+    if(argc == 2) {
+        if((fp = fopen(argv[1], "r")) == NULL) {
+            puts("Can not open this file");
+            exit(EXIT_FAILURE);
+        }
+    } else {
+        fp = stdin;
+    }
+
+    while(fscanf(fp, "%lf", &num) == 1) {
+        sum += num;
+        count++;
+        if(feof(fp) || ferror(fp)) {
+            break;
+        }
+    }
+
+    if(count > 0) {
+        printf("The average is %.2f\n", sum / count);
+    }
+    fclose(fp);
+}
+
+5.
+#define LINE_SIZE  256
+void __test_e5__(int argc, char **argv)
+{
+    if(argc != 3) {
+        fprintf(stderr, "Usage: %s character filename", argv[0]);
+        exit(EXIT_FAILURE);
+    } 
+
+    FILE * fp;
+    char ch = *agrv[1];
+
+    if((fp = fopen(argv[2], "r")) == NULL) {
+        puts("Can not open this file");
+        exit(EXIT_FAILURE);
+    }
+
+    char line[LINE_SIZE];
+    while(!feof(fp) && !ferror(fp) && fgets(line, LINE_SIZE, fp) != NULL) {
+        if(strchr(ch, line)) {
+            puts(line);
+        }
+    }
+}
+
+6.
+二进制文件和文本文件本质上没有区别，在磁盘上保存的都是二进制格式数据
+文本文件打开会按照一定的编码转成字符，而二进制文件则保留原始的数据，
+文本模式打开文件，在windows系统上会将\n转成\r\n,其他的没有区别
+
+7.
+fprintf会按照字符存储数字，即保存在文件里的是'8' '2' '3' '8' '7' '0' '1',一共七个字符
+而fwrite则会保原始的字节数据，即写进文件是一个int的大小
+
+没有区别
+
+8.
+
+
+9.
+a+

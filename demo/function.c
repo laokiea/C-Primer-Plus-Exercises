@@ -1,4 +1,11 @@
+#ifndef NORMAL_INCLUDE_UNIT
+#define NORMAL_INCLUDE_UNIT
+
 #include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+#endif
 
 // 自定义函数代替fgets
 // 获取整行输入，如果输入里有换行替换成\0,如果有空字符串\0，就抛弃缓冲区内的后续输入
