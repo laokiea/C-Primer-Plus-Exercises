@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 #include <ctype.h>
 #include "function.h"
 
@@ -196,8 +197,8 @@ void __copy_struct_directly__(void)
     printf("%.2f\n", fund_2.loadword);
 }
 
-void show_bytes(unsigned char * string, int len) {
-    for(int i = len - 1;i >= 0;i--) {
+void show_bytes(char * string, size_t len) {
+    for(size_t i = len - 1;i >= 0;i--) {
         printf("%x ", string[i]);
     }
     printf("\n");
@@ -215,9 +216,241 @@ int strlonger(char * s1, char * s2)
 //         printf("%x ", a[i]);
 //     }
 // }
+struct namect {
+    char * lname;
+    char * fname;
+    int letters;
+};
+
+void getinfo(struct namect * nct)
+{
+    nct->lname = (char *) malloc(10);
+    nct->fname = (char *) malloc(10);
+    puts("Enter your first name");
+    s_gets(nct->fname, 10);
+    puts("Enter your last name");
+    s_gets(nct->lname, 10);
+}
+
+void makeinfo(struct namect * nct) 
+{
+    nct->letters = strlen(nct->lname) + strlen(nct->fname);
+}
+
+void showinfo(struct namect * nct)
+{
+    printf("%s %s %d\n", nct->fname, nct->lname, nct->letters);
+}
+
+void cleanup(struct namect * nct)
+{
+    free(nct->fname);
+    free(nct->lname);
+}
+
+void __test_write_to_file__(void)
+{
+    struct test {
+        char name[20];
+        int len;
+    };
+
+    FILE * fp = fopen("test.dat", "a+b");
+    struct test test_arr[2] = {{
+        "sason sam",
+        9
+    },{
+        "lily",
+        4
+    }};
+
+    fwrite(test_arr, sizeof(struct test), 2, fp);
+}
+
+void __test_read_to_struct__(void)
+{
+    struct test {
+        char name[20];
+        int len;
+    };
+    FILE * fp = fopen("test.dat", "a+b");
+    rewind(fp);
+    struct test test_arr[2];
+    struct test * p_te = test_arr;
+    fread(&test_arr[0], sizeof(struct test), 2, fp);
+
+    printf("%s %d\n", p_te->name, p_te->len);
+    p_te++;
+    printf("%s %d\n", p_te->name, p_te->len);
+}
+
+void __union_first_known__(void)
+{
+    union test_union {
+        char letter;
+        int len;
+        double score;
+    };
+
+    union test_union a = {.letter = 'c'};
+    union test_union b = a;
+    union test_union * p_t_u = &b;
+    putchar(p_t_u->letter);
+}
+
+void __test_anonymous_union__(void)
+{
+    union test_union {
+        char letter;
+        int len;
+        double score;
+    };
+
+    union test_union * p_t_u = &(union test_union) {'d'};
+    putchar(p_t_u->letter);
+}
+
+void __test_struct_anonymous_struct_member__(void)
+{
+    struct test {
+        // char letter;
+        struct {
+            char letter;
+        };
+    } test_s = {
+        // 'o',
+        {'h'}
+    };
+
+    putchar(test_s.letter);
+}
+
+void __test_union_anonymous_union_member__(void)
+{
+    union test {
+        union {char letter; int len;};
+    } test_u = {
+        {.len = 10}
+    };
+    putchar(test_u.letter);
+}
+
+void __enum_first_known__(void)
+{
+    enum colors {read = 9, blue, green, yellow, orange};
+    enum colors color;
+    color = orange;
+    short c;
+    c = yellow;
+    printf("%hd\n", c); 
+}
+
+void __union_struct_enum_namespace__(void)
+{
+    int struct_test;
+    struct struct_test {
+        int len;
+    };
+}
+
+void __typedef_first_known__(void)
+{
+    // unsigned int a = 10;
+    // typedef unsigned char BYTE;
+    // BYTE a = 'c';
+    // BYTE * b = "hello";
+    // BYTE c[10] = "world";
+    // putchar(a);
+    // puts(b);
+    // puts(c);
+    // printf("%d\n", *b);
+}
+
+void __test_unsigned_char__(void)
+{
+    char c = 0X80;
+    unsigned uc = 0X80;
+    // unsigned int a = c;
+    // unsigned int b = uc;
+    // int a = c;
+    // int b = uc;
+    // printf("%d\n", a);
+}
+
+void __test_complex_declaration__(void)
+{
+    // int d[3][4] = {{1,2,3,4},{5,6,7,8},{9,10,11,12}};
+    // int (*pt_1)[4] = &d[0];
+    // int (*pt_2)[3][4] = &d;
+    // printf("%p %p %p\n", d, &d, &d[0]);
+    // printf("%d\n", (*d)[0]);
+}
+
+void toUpper(char *);
+void toLower(char *);
+int pow_(int);
+
+void toLower(char * a) {
+    while(*a) {
+        *a = tolower(*a);
+        a++;
+    }
+}
+// 函数的地址就是函数名，代表函数对应的第一条指令的地址
+
+void __func_pointer_usage__(void)
+{
+    void (*pf)(char *);
+
+    // pf = toLower;
+    // char string[10] = "HELLO";
+    // pf(string);
+    // puts(string);
+
+    char string[10] = "hello";
+    pf = toUpper;
+    (*pf)(string);
+    puts(string);
+}
+
+typedef void (* FP_VR_CP) (char *);
+// f_p/*f_p/Tolower
+void __func_pointer_as_arg__(FP_VR_CP f_p, char * string) {
+    (*f_p)(string);
+    puts(string);
+}
+
+// typedef void (* FP_VR_CP)(char *);
 
 int main(int argc, char * argv[]) 
 {
+    // FP_VR_CP p_f = toUpper;
+    // char string[10] = "hello";
+    // p_f(string);
+    // puts(string);
+    // void (*p_f)(char *) = toLower;
+    // __func_pointer_as_arg__(p_f, string); 
+    // __func_pointer_usage__();
+    // void (*p)(char *);
+    // p = toUpper;
+    // p = toLower;
+    // typedef int[5] arr5;
+    // typedef int[5] * p_arr5;
+    // typedef int[5] * [10] arrp10;
+    // int (* p)[5];
+    // char * char_return_func_p (int)
+    // __test_complex_declaration__();
+    // __test_unsigned_char__();
+    // __typedef_first_known__();
+    // __union_struct_enum_namespace__();
+    // __enum_first_known__();
+    // __test_union_anonymous_union_member__();
+    // __test_struct_anonymous_struct_member__();
+    // __test_anonymous_union__();
+    // __union_first_known__();
+    // __test_read_to_struct__();
+    // __test_write_to_file__();
+
     // int a = -2;
     // printf("%d\n", ABS(a));
 
@@ -284,7 +517,94 @@ int main(int argc, char * argv[])
     // *pfloat = 9.0;
     // printf("num : %d\n *pfloat : %f\n", num, *pfloat);
 
-    printf("%d\n", '8');
+    // printf("%d\n", '8');
+
+    // unsigned short usi = 65535;
+    // short si = usi;
+    // printf("%hd\n", si);
+
+    // printf("%d\n", 13 ^ 11 ^ 7 ^ 1);
+
+    // int a = 8911;
+    // show_bytes((char *)&a, sizeof(a));
+
+    // struct namect namect_1;
+    // getinfo(&namect_1);
+    // makeinfo(&namect_1);
+    // showinfo(&namect_1);
+    // cleanup(&namect_1);
+
+    // struct namect * p_name = &((struct namect) {"sason", "sam", 8});
+    // printf("%s\n", p_name->lname);
+
+    //flexiable array member
+    // 伸缩性数组成员必须是结构的最后一个成员
+    // 结构中必须至少有一个普通成员
+    // 与普通数组声明类似，只不过方括号是空的。
+
+    struct flex {
+        double average;
+        int count;
+        double scores[];
+    };
+
+    // sizeof flex => 16 存在内存对齐
+
+    // printf("%zd\n", sizeof(struct flex));
+
+    // struct flex flex_1;
+    // printf("%p %p\n", &flex_1, &flex_1.average);  
+
+    struct flex * p_flex, *p_flex_cpy;
+    p_flex_cpy = &(struct flex){};
+    p_flex = malloc(sizeof(struct flex) + sizeof(double) * 5); 
+    p_flex->count = 5;
+    // p_flex++;
+    // printf("%d\n", p_flex->count); 
+    for(int i = 0;i < p_flex->count;i++) {
+        p_flex->scores[i] = i * 2.0;
+    }
+
+    // struct {char name[20];};
+
+    // *p_flex_cpy = *p_flex;
+    // printf("%.2f\n", p_flex_cpy->scores[10]);
+
+    // FILE * fp = fopen("test", "a+b");
+    // char buf[1204] = "evil";
+    // rewind(fp);
+    // fgets(buf, 1024, fp);
+    // fputs(buf, fp);
+
+    // struct test test_array[2];
+    // struct test * test_pp = &test_array[0];
+
+
+    // struct test * t1, * t2;
+    // t1 = malloc(sizeof(struct test));
+    // t1->a[0] = 10;
+    // t1->a[1] = 11;
+
+    // t2 = &((struct test) {});
+    // *t2 = *t1;
+    // printf("%d\n", t2->a[1]);
+
+    // typedef struct{
+//      short s; 
+//      char  c1;
+//      int   i;
+//      char  c2; 
+//  }T_FOO;
+
+
+//     T_FOO a; 
+//     printf("s -> %d,c1 -> %d, i -> %d, c2 -> %d\n",
+//     (unsigned int)&a.s  - (unsigned int)&a,  
+//           (unsigned int)&a.c1 - (unsigned int)&a,
+//           (unsigned int)&a.i  - (unsigned int)&a,
+//           (unsigned int)&a.c2 - (unsigned int)&a);
 
     return 0;
 }
+
+// 传递结构可以在结构体积比较小的情况下，传递指针更常用

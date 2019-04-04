@@ -1,0 +1,94 @@
+1. 
+struct关键字 得有一个标识符 最后一个成员声明缺少分毫分号
+
+2.
+6 1
+22 spiffo road
+S p
+
+3.
+struct month {
+    char name[10];
+    char sx[4];
+    int days;
+    int no;
+};
+
+4.
+struct month year[12] = {{},{},{},{},{},{},{},{},{},{},{},{}};
+
+5.
+
+6.
+#include <string.h>
+LENS arr[10];
+arr[2].foclen = 200;
+arr[2].fsop = 2.0;
+strcpy(arr[2].brand, "Remarkata");
+
+LENS arr[10] = {[2] = {
+    200,
+    2.0,
+    "Remarkata"
+}}
+
+7.
+6 
+"Arcturan"
+"cturan"
+
+deb.title.last
+pb->title.last
+
+#include "starfolk.h"
+void func(const struct bem * b) 
+{
+    printf("%s %s is a %d %s\n", b->title.first, b->title.last, b->limbs, b->type);
+}
+
+8.
+willie.born
+pt->born
+scanf("%d", &willie.born);
+scanf("%d", &pt->born);
+scanf("%s", willie.name.lname);
+scanf("%s", pt->name.lname);
+char letter = willie.name.fname[3];
+strlen(pt->name.lname) + strlen(pt->name.fname);
+
+9.
+struct car {
+    char name[10];
+    int rps;
+    int level;
+    float distance;
+    int year;
+}
+
+10.
+struct gas calcu(struct gas g) 
+{
+    g.mpg = g.distance / g.gals;
+    return g;
+}
+
+void calcu(struct gas * g)
+{   
+    g.mpg = g.distance / g.gals; // gals = 0 , mpg = +INF
+}
+
+11.
+enum choices = {no = 0, yes, maybe};
+
+12.
+char * (*fp)(cahr *, char);
+
+13.
+typedef double (*FP_DR_DDP)(double, double);
+FP_DR_DDP fp_arr[4] = {func1, func2, func3, func4};
+or
+double (*fp[4])(double, double) = {func1, func2, func3, func4};
+char * (*fp)(char * , char);
+
+fp_arr[1](10.0, 2.5);
+(*fp_arr[1])(10.0, 2.5);

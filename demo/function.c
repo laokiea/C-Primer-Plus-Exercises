@@ -1,7 +1,6 @@
 #ifndef NORMAL_INCLUDE_UNIT
 #define NORMAL_INCLUDE_UNIT
 
-#include <stdio.h>
 #include <string.h>
 #include <ctype.h>
 
