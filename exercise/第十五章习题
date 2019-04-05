@@ -1,0 +1,55 @@
+1.
+011
+1101
+111011
+1110111
+
+2.
+025, 0x15
+0125, 0x55
+0114, 0x4c
+0235, 0x9d
+
+3.
+11111100
+00000010
+00000111
+00000111
+00000101
+00000011
+00011100
+
+4.
+00000000
+0
+00000000
+1
+00000110
+1
+00101000
+
+5.
+0111 1111
+0x7f
+0177
+
+6.
+*=2不全等于<<2,可能会有高位溢出
+特定情况下是一样的，但是本质上1和1相加会有进位，1|1等于1
+
+7.
+struct tb {
+    unsigned int soft_count : 2;
+    bool : 1;
+    unsigned int cd_rom_count : 2;
+    bool : 1;
+    unsigned int hard_count : 2;
+}
+
+struct tb {
+    unsigned int hard_count : 2;
+    bool : 1;
+    unsigned int cd_rom_count : 2;
+    bool : 1;
+    unsigned int soft_count : 2;
+}
